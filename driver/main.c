@@ -42,8 +42,8 @@ static int __init midi_driver_init(void)
 	ret = cdev_add(&midi_cdev, midi_dev_num, 1);
 	if (ret < 0) goto fail_cdev;
 
-	/* 5. Initialize Hardware simulation & Buffers from hw_sim.c */
-	ret = hw_sim_init();
+	/* 5. Initialize Hardware communication & Buffers from usb_midi.c */
+	ret = usb_midi_init();
 	if (ret < 0) goto fail_hw;
 
 	pr_info(DEVICE_NAME ": module loaded successfully (Major=%d)\n", MAJOR(midi_dev_num));
@@ -64,7 +64,7 @@ fail_class:
 static void __exit midi_driver_exit(void)
 {
 	/* Reverse order teardown */
-	hw_sim_exit();
+	usb_midi_exit();
 	cdev_del(&midi_cdev);
 	device_destroy(midi_class, midi_dev_num);
 	class_destroy(midi_class);

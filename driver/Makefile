@@ -3,7 +3,7 @@
 # ──────────────────────────────────────────────────────────────────
 
 obj-m += custom_midi.o
-custom_midi-y := main.o fops.o hw_sim.o
+custom_midi-y := main.o fops.o usb_midi.o
 
 KDIR := /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)

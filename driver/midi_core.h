@@ -27,9 +27,9 @@ extern wait_queue_head_t midi_wq;
 extern const struct file_operations midi_fops;
 
 /*
- * Person 3 exports the setup/teardown functions for the hardware simulation.
+ * Person 3 exports the setup/teardown functions for the hardware communication.
  */
-int hw_sim_init(void);
-void hw_sim_exit(void);
+int usb_midi_init(void);
+void usb_midi_exit(void);
 
 #endif /* MIDI_CORE_H */

@@ -1,18 +1,14 @@
 # ──────────────────────────────────────────────────────────────────
 # Root Makefile for Custom MIDI Driver Project
-# Assigned to Person 5 (Build Systems & Integration)
 # ──────────────────────────────────────────────────────────────────
 
-.PHONY: all driver tests load unload clean
+.PHONY: all driver load unload clean
 
-# Default rule builds both kernel module and user-space app
-all: driver tests
+# Default rule builds the kernel module
+all: driver
 
 driver:
 	$(MAKE) -C driver
-
-tests:
-	$(MAKE) -C tests
 
 # Quick loading and unloading scripts
 load:
@@ -25,4 +21,3 @@ unload:
 
 clean:
 	$(MAKE) -C driver clean
-	$(MAKE) -C tests clean
